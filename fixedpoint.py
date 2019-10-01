@@ -48,7 +48,7 @@ def fixed(f,g,fprim,x1, tol):       #Función de punto fijo
             x1 = x_n
             it += 1
             
-        return print('Resultado:\n' , x_n,'\nIteraciones:\n', it, '\n')
+        return print('\nResultado:\n' , x_n,'\nIteraciones:\n', it, '\n')
     else:
         print('Diverge.', '\n')
 
