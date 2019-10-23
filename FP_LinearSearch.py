@@ -2,9 +2,12 @@
 
 
 def linearSearch(arr, n):
+    it = 0
+
     for i in range(n):
         if arr[i] is i:
-            return i
+            return i, it
+        it+=1
     # If no fixed point present then return -1
     return ("No fixed point for the given vector.")
 
