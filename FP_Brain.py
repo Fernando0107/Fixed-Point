@@ -57,13 +57,6 @@ def fixed_point(func, x0, args=(), xtol=1e-8, maxiter=500, method='del2'):
     .. [1] Burden, Faires, "Numerical Analysis", 5th edition, pg. 80
     Examples
     --------
-    >>> from scipy import optimize
-    >>> def func(x, c1, c2):
-    ...    return np.sqrt(c1/(x+c2))
-    >>> c1 = np.array([10,12.])
-    >>> c2 = np.array([3, 5.])
-    >>> optimize.fixed_point(func, [1.2, 1.3], args=(c1,c2))
-    array([ 1.4920333 ,  1.37228132])
     """
     use_accel = {'del2': True, 'iteration': True}[method]
     x0 = _asarray_validated(x0, as_inexact=True)
