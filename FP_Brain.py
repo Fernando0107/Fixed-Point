@@ -29,7 +29,7 @@ def _fixed_point_helper(func, x0, args, xtol, maxiter, use_accel):
     raise RuntimeError(msg)
 
 
-def fixed_point(func, x0, args=(), xtol=1e-8, maxiter=500, method='del2'):
+def fixed_point(func, x0, args=(), xtol=1e-8, maxiter=500, method='iteration'):
     """
     Find a fixed point of the function.
     Given a function of one or more variables and a starting point, find a
@@ -70,7 +70,7 @@ def func(x,c1,c2):
     return z
 
 
-c1 = np.array([10, 12])
-c2 = np.array([3, 5])
+c1 = np.array([10, 12, 34, 70])
+c2 = np.array([3, 5, 70, 80])
 
-print("Result: \n",fixed_point(func, [1.2, 1.3], args=(c1, c2)))
+print("Result: \n",fixed_point(func, [10, 20, 20, 15], args=(c1, c2)))
