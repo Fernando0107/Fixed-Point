@@ -5,19 +5,20 @@ import decimal
 from scipy._lib._util import _asarray_validated, _lazywhere
 
 
-def sp_helper(actual, desired):
-    return (actual - desired) / desired   #Funcion auxiliar para calcular diferencial
+def sp_helper(actual, deseado):
+    return (actual - deseado) / deseado   #Funcion auxiliar para calcular diferencial
 
 def fixedPoint(function, x0, args, tol, maxit):
     p0 = x0 
-    for i in range(maxit):    #Iterar hasta le maximo de iteraciones
+    for i in range(maxit):    #Iterar hasta el máximo de iteraciones
 
         p1 = function(p0, *args)  #Vector resultante
 
         p=p1          #Variable temporal
 
-        relerr = _lazywhere(p0 != 0, (p, p0), f=sp_helper, fillvalue=p) #Funcion aux.
-        if(np.all(np.abs(relerr) < tol)):  #Condición de convergencia
+        fval = _lazywhere(p0 != 0, (p, p0), f=sp_helper, fillvalue=p) #Funcion aux.
+
+        if(np.all(np.abs(fval) < tol)):  # Condición de convergencia
             return p
 
         p0 = p
@@ -50,7 +51,7 @@ def auxFixedPoint(function, x0, maxit, tol, args=()):
     --------
     """
 
-    x0 = _asarray_validated(x0, as_inexact=True) #Verifica el input es valido 
+    x0 = _asarray_validated(x0, as_inexact=True) #Verifica si el input es valido 
 
     return fixedPoint(function, x0, args, tol, maxit)
 
