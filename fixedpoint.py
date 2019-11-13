@@ -53,3 +53,29 @@ def fixed(f,g,fprim,x1, tol):       #Función de punto fijo
         print('Diverge.', '\n')
 
 fixed(f,funciong,funDer,x, tol)      #Llamada a la función con los paramentros
+
+#Gráfica
+a1 = 1
+b1 = 3
+paso = 0.1
+x = np.arange(a1, b1, paso)
+x1 = np.arange(a1, b1, paso)
+
+
+Y_F = [f(i) for i in x1]
+Y_G = [funciong(i) for i in x]
+Y_F1 = [fgraph(i) for i in x]
+Y_0 = [zero(i) for i in x]
+
+fig1 = plt.figure()
+axe = fig1.add_subplot(1, 1, 1)
+axe.plot(x1, Y_F, 'b', label='f(x)')
+axe.plot(x, Y_G, 'y', label='g(x)',  linestyle='--')
+axe.plot(x, Y_F1, 'r', label='x',  linestyle='--')
+axe.plot(x, Y_0, 'g')
+
+axe.legend()
+plt.ylabel("y")
+plt.xlabel("x")
+plt.title("Punto Fijo")
+plt.show()
